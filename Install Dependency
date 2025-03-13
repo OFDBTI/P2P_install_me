@@ -1,0 +1,19 @@
+#先从官方获取压缩包（可在github上download zip）
+git clone https://github.com/haooozi/P2P.git
+
+#在prompt命令窗口创建环境：（直接复制两行代码，回车，能自动把两行命令都完成）
+conda create -n p2p python=3.9
+conda activate p2p
+
+#安装依赖（直接复制三行代码，回车，能自动把三行命令都完成）
+pip install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 --index-url https://download.pytorch.org/whl/cu118
+pip install mmcv==2.0.0 -f https://download.openmmlab.com/mmcv/dist/cu118/torch2.0/index.html
+pip install spconv-cu118==2.3.6
+
+pip install mmdet3d==1.1.0
+
+pip install mmdet==3.0.0
+
+#要求安装yapf==0.40.0(但如果单独安装会显示已经安装了0.43.0)(可以先不用管，报错的话再安装要求版本)
+
+#忘记安装mmengine==0.7.4但仍能正常运行未报错（留待观察）
