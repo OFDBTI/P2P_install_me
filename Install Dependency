@@ -14,6 +14,6 @@ pip install mmdet3d==1.1.0
 
 pip install mmdet==3.0.0
 
-#要求安装pip install yapf==0.40.0(但如果单独安装会显示已经安装了0.43.0)(可以先不用管，报错的话再安装要求版本)
+#要求安装pip install yapf==0.40.0(单独安装会显示已经安装了0.43.0,跑代码时会报错,GPT告知:yapf==0.40.2，FormatCode函数不再接受verify参数，这导致了兼容性问题。可将yapf降级到0.40.1版本)
 
 #要求安装pip install mmengine==0.7.4(但如果单独安装会显示已经安装了0.10.7)(可以先不用管，报错的话再安装要求版本)
