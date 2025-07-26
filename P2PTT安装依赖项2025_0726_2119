@@ -1,0 +1,18 @@
+####2025.07.18.16:31第一次跑通我从PTT网络里摘来的交叉注意力模块到P2P-point网络的代码，安装依赖的细节如下####
+
+conda create -n p2ptt python=3.9.0
+conda activate p2ptt
+
+pip install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 --index-url https://download.pytorch.org/whl/cu118    # torch==2.0.1
+pip install mmcv==2.0.0 -f https://download.openmmlab.com/mmcv/dist/cu118/torch2.0/index.html                        # mmcv==20.0.
+pip install spconv-cu118==2.3.6                                                                                      # spconv==2.3.6
+
+pip install mmengine==0.7.4
+pip install mmdet==3.0.0
+pip install mmdet3d==1.1.0
+
+pip install opencv-python==4.10.0.84  # 默认安装4.12.0.88，该版本要求NumPy >= 2.0 -> 因此，Grok推荐安装4.10.0.84（就不会报错了）
+pip install numpy==1.26.4             # 默认安装NumPy==2.0.2，会导致与使用NumPy1.x编译的模块不兼容，导致matplotlib和torch等依赖出问题，错误表明，matplotlib导入时失败，原因是NumPy的_ARRAY_API未找到，且出现ImportError:numpy.core.multiarray failed to import. (Grok3推荐的解决办法是降级NumPy到低于2.0的版本，推荐降级到稳定且兼容性好的NumPy==1.26.4)
+pip install yapf==0.43.0              # -> 0.40.0 -> 0.32.0 (不恒定，最开始P2P原网络是要求安装0.40.0，2024.11/12—2025.03的时候还没问题，等2025.07再训练代码的时候，之前配的环境就开始报错了，问AI模型解释说让升级或降级版本，有一次升级到0.43.0没问题了，后来训练时又不行了，又问AI模型说降级到0.32.0才没问题，感觉以后还会再变化)
+pip install torchmetrics==0.7.1
+pip install thop                      # (主要是2025.07的时候把PTT里的Transformer变体中的交叉注意力模块添加到P2P网络里，形成我的创新点：P2PTT，这个库是PTT交叉注意力要用到的库)
